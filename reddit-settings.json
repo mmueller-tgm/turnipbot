@@ -1,0 +1,39 @@
+{
+  "subs" : {
+    "acturnips":{
+      "name": "acturnips",
+      "url": "https://www.reddit.com/r/acturnips/",
+      "selling": [
+        "nook",
+        "trash panda",
+        "twins"
+      ],
+      "buying": [
+        "daisy",
+        "mae"
+      ],
+      "ignore": [
+        "looking",
+        "looking for",
+        "[NL]"
+      ],
+      "flairs": {}
+    },
+    "ACNHTurnips":{
+      "name": "ACNHTurnips",
+      "url": "https://www.reddit.com/r/ACNHTurnips/",
+      "selling" : ["[nook]"],
+      "buying": ["[daisy]"],
+      "ignore": ["looking", "looking for"],
+      "flairs": {
+      "selling": ["hosting daisy"],
+      "buying": ["hosting nooks"],
+      "ended": ["ended"]
+      }
+    }
+  },
+  "general" : {
+    "buy-setprice" : 89,
+    "sell-setprice" : 350
+  }
+}
