@@ -3,3 +3,5 @@ venv/
 .idea/
 .git/
 __pycache__/
+nohup.out
+*.log

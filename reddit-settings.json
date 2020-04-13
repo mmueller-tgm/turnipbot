@@ -5,24 +5,32 @@
       "url": "https://www.reddit.com/r/acturnips/",
       "selling": [
         "nook",
+        "tim",
+        "tom",
         "trash panda",
-        "twins"
+        "twins",
+        "t&t",
+        "trashlings",
+        "buying"
       ],
       "buying": [
         "daisy",
-        "mae"
+        "mae",
+        "sale"
       ],
       "ignore": [
         "looking",
         "looking for",
-        "[NL]"
+        "[NL]",
+        "?",
+        "What"
       ],
       "flairs": {}
     },
     "ACNHTurnips":{
       "name": "ACNHTurnips",
       "url": "https://www.reddit.com/r/ACNHTurnips/",
-      "selling" : ["[nook]"],
+      "selling" : ["[nooks]"],
       "buying": ["[daisy]"],
       "ignore": ["looking", "looking for"],
       "flairs": {
@@ -33,7 +41,7 @@
     }
   },
   "general" : {
-    "buy-setprice" : 89,
+    "buy-setprice" : 95,
     "sell-setprice" : 350
   }
 }

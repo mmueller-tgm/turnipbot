@@ -1,6 +1,7 @@
 from datetime import datetime
 from praw.models import Submission
 
+
 class Offer:
     author: str
     title: str
@@ -17,3 +18,6 @@ class Offer:
         self.datetime = datetime.fromtimestamp(submission.created_utc)
         self.buy = False
         self.sell = False
+
+    def __str__(self):
+        return f"{'B' if self.buy else 'S'} [{self.datetime}] /u/{self.author} {self.bells}Bells {self.url}"

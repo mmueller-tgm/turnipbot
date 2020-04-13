@@ -1,21 +1,34 @@
 import json
-import queue
+import logging
+import sys
 
-from turnipbot.submissionserver.telebot.telegramBot import TelegramBot
-from turnipbot.subredditListener import SubListener
+from turnipbot.offerserver.notificationServer import NotificationServer
+from turnipbot.subredditObserver import SubListener
 from turnipbot.submissionProcessor import SubmissionProcessor
-from turnipbot.submissionserver.consoleLogger import ConsoleLogger
-from turnipbot.submissionserver.filePrinter import FilePrinter
+from turnipbot.offerserver.consoleLogger import ConsoleLogger
+from turnipbot.offerserver.filePrinter import FilePrinter
+from turnipbot.offerserver.telebot.telegramBot import TelegramBot
 
-if __name__ == "__main__":
+
+
+def usage():
+    pass
+
+
+def main(argv):
+
+    logging.basicConfig(handlers=[logging.FileHandler(filename="turnip-bot.log"), logging.StreamHandler(sys.stderr)],
+                        level=logging.INFO, format='[%(asctime)s] %(levelname)s {%(filename)s:%(lineno)d} - %(message)s')
+
     with open("reddit-settings.json", 'r') as config_file:
         config = json.loads(config_file.read())
 
-        proc_queue = queue.Queue()
-
-        sP = SubmissionProcessor(config, proc_queue, ConsoleLogger(), FilePrinter(), TelegramBot())
+        sP = SubmissionProcessor(config, TelegramBot())#, ConsoleLogger(), FilePrinter(), NotificationServer())
         sP.start()
 
         for sub in config['subs']:
-            sl = SubListener(sub, sP)
-            sl.start()
+            SubListener(sub, sP).start()
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
