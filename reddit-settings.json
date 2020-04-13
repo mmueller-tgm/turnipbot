@@ -41,7 +41,7 @@
     }
   },
   "general" : {
-    "buy-setprice" : 95,
-    "sell-setprice" : 350
+    "buy-setprice" : 100,
+    "sell-setprice" : 150
   }
 }

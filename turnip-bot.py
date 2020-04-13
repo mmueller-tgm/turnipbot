@@ -23,7 +23,7 @@ def main(argv):
     with open("reddit-settings.json", 'r') as config_file:
         config = json.loads(config_file.read())
 
-        sP = SubmissionProcessor(config, TelegramBot())#, ConsoleLogger(), FilePrinter(), NotificationServer())
+        sP = SubmissionProcessor(config, ConsoleLogger(), NotificationServer())
         sP.start()
 
         for sub in config['subs']:

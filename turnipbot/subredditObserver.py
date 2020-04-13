@@ -5,7 +5,7 @@ import json
 from prawcore.exceptions import ServerError
 from turnipbot.submissionProcessor import SubmissionProcessor
 
-default_ua = 'script:turnip-bot:v2.0.0 (by /u/maximus5113)'
+default_ua = 'script:turnip-bot:v2.0.0'
 default_sn = 'turnip-bot'
 
 logger = logging.getLogger('observerLogger')

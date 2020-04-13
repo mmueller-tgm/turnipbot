@@ -2,6 +2,7 @@ import logging
 from datetime import datetime, timedelta
 import re
 import json
+from word2number import w2n
 from threading import Thread
 from turnipbot.offer import Offer
 from praw.models import Submission
@@ -46,7 +47,7 @@ class SubmissionProcessor(Thread):
             return
 
         if offer.sell:
-            b = re.findall('\d{3}', offer.title)
+            b = re.findall('\d{3}', offer.title) # []
             if len(b) > 0:
                 offer.bells = int(b[0])
                 if offer.bells < self.config['general']['sell-setprice']:
