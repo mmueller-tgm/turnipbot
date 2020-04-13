@@ -1,11 +1,6 @@
-import threading
+from turnipbot.submissionserver.submissionServerInterface import SubmissionServerInterface
 from datetime import date
-from Offer import Offer
-
-
-class SubmissionServerInterface:
-    def serve_submission(self, offer: Offer) -> None:
-        pass
+from turnipbot.offer import Offer
 
 
 class FilePrinter(SubmissionServerInterface):
@@ -19,8 +14,3 @@ class FilePrinter(SubmissionServerInterface):
         line = f"{offer.datetime},{offer.author},{offer.bells},{offer.url}\n"
         FilePrinter.write_line(line)
 
-
-class ConsoleLogger(SubmissionServerInterface):
-    def serve_submission(self, offer: Offer) -> None:
-        line = f"{offer.datetime},{offer.author},{offer.bells},{offer.url}\n"
-        print(f"{'B' if offer.buy else 'S'} {line}", end="")

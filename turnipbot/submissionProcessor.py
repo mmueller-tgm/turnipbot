@@ -1,12 +1,16 @@
 from datetime import datetime, date
 import re
 from threading import Thread
-from Offer import Offer
+from turnipbot.offer import Offer
 from praw.models import Submission
 from queue import Queue
-from SubmissionServer import SubmissionServerInterface
+from turnipbot.submissionserver.submissionServerInterface import SubmissionServerInterface
+
 
 class SubmissionProcessor(Thread):
+    """
+        The SubmissionProcessor collects submissions from different Subreddits in it's queue, processes them and sends them further to different Servers (as in to serve to something)
+    """
     def __init__(self, config, proc_queue: Queue, *submissionServer: SubmissionServerInterface):
         super().__init__()
         self.config = config
@@ -16,7 +20,7 @@ class SubmissionProcessor(Thread):
     def add_server(self, subServ: SubmissionServerInterface):
         self.server.append(subServ)
 
-    def process_submission(self, subm:Submission):
+    def process_submission(self, subm: Submission):
         offer = Offer(subm)
 
         subreddit = subm.subreddit.display_name
@@ -46,9 +50,7 @@ class SubmissionProcessor(Thread):
         if len(b) > 0:
             offer.bells = int(b[0])
             for serv in self.server:
-                serv.serve_submission(serv, offer)
-        else:
-            print(offer.title)
+                serv.serve_submission(offer)
 
     def run(self) -> None:
         while True:

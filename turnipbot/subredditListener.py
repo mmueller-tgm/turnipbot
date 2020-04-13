@@ -1,6 +1,6 @@
 import praw
 import threading
-from SubmissionProcessor import SubmissionProcessor
+from turnipbot.submissionProcessor import SubmissionProcessor
 
 default_ua = 'script:turnip-bot:v2.0.0 (by /u/maximus5113)'
 default_sn = 'turnip-bot'

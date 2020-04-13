@@ -1,8 +1,11 @@
 import json
 import queue
-from SubListener import SubListener
-from SubmissionProcessor import SubmissionProcessor
-from SubmissionServer import *
+
+from turnipbot.submissionserver.telebot.telegramBot import TelegramBot
+from turnipbot.subredditListener import SubListener
+from turnipbot.submissionProcessor import SubmissionProcessor
+from turnipbot.submissionserver.consoleLogger import ConsoleLogger
+from turnipbot.submissionserver.filePrinter import FilePrinter
 
 if __name__ == "__main__":
     with open("reddit-settings.json", 'r') as config_file:
@@ -10,7 +13,7 @@ if __name__ == "__main__":
 
         proc_queue = queue.Queue()
 
-        sP = SubmissionProcessor(config, proc_queue, ConsoleLogger)
+        sP = SubmissionProcessor(config, proc_queue, ConsoleLogger(), FilePrinter(), TelegramBot())
         sP.start()
 
         for sub in config['subs']:
