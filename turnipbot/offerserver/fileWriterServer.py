@@ -3,7 +3,7 @@ from turnipbot.offer import Offer
 from turnipbot.offerserver.offerServerInterface import OfferServerInterface
 
 
-class FilePrinter(OfferServerInterface):
+class FileWriterServer(OfferServerInterface):
     @staticmethod
     def write_line(line: str, sell = True):
         with open(f"{'sell' if sell else 'buy'}-turnips-{date.today().strftime('%Y-%m-%d')}.csv", 'a+') as file:
@@ -12,5 +12,5 @@ class FilePrinter(OfferServerInterface):
 
     def serve_offer(self, offer: Offer) -> None:
         line = f"{offer.datetime},{offer.author},{offer.bells},{offer.url}\n"
-        FilePrinter.write_line(line, offer.sell)
+        FileWriterServer.write_line(line, offer.sell)
 

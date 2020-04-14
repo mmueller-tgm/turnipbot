@@ -5,7 +5,8 @@ from turnipbot.offerserver.offerServerInterface import OfferServerInterface
 
 
 class NotificationServer(OfferServerInterface):
-    def __init__(self):
+    def __init__(self, config, *offerServer: OfferServerInterface):
+        super().__init__(config, *offerServer)
         notify2.init("Turnip NotificationServer")
 
     def serve_offer(self, offer: Offer) -> None:
